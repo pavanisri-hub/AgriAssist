@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Agriculture Feeding</title>
+<style>
+    body {
+        font-family: Poppins;
+        margin: 0;
+        padding: 0;
+        background: #e3f9e5;
+        color: #4CAF50;
+    }
+
+    .feed1 {
+        margin-top: 80px;
+        max-width: 1200px;
+        margin: auto;
+        padding: 30px 40px;
+    }
+
+    .tex1, .tex4, .tex5, .tex6, .tex7, .tex8 {
+        color: #4CAF50;
+    }
+
+    .tex2, .tex3, .tex9 {
+        color: black;
+    }
+
+    .tex2 {
+        font-size: 18px;
+        margin-bottom: 40px;
+    }
+
+    .tex3 {
+        font-size: 20px;
+        background-color: #fff;
+        padding: 30px;
+        border-left: 10px solid #4CAF50;
+        border-radius: 10px;
+        line-height: 1.5;
+    }
+
+    .one{
+        animation: myani2 1s ease;
+        margin-bottom: 50px;
+    }
+    @keyframes myani2 {
+        from { opacity: 0; transform: translatex(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+        margin-top: 50px;
+    }
+
+    .card {
+        font-size: 18px;
+        border: 2px solid #4CAF50;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        transform: translateY(0px);
+        transition: transform 0.5s ease;
+        margin-bottom: 30px;
+        word-wrap: break-word; 
+        overflow-wrap: break-word;
+        animation: myani 1s ease;
+    }
+    .card h4{
+        font-size: 23px;
+    }
+    .card p {
+        color: black;
+    }
+
+    .card:hover {
+        transform: translateY(-15px);
+    }
+
+    .tabb {
+        margin-top: 40px;
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+    }
+
+    .tabb th, .tabb td {
+        border: 2px solid #4CAF50;
+        padding: 15px;
+    }
+    .tabb tr:hover {
+        box-shadow: 0 10px 20px rgba(76, 175, 80, 0.4);
+    }
+
+    .tabb th {
+        background-color: #4CAF50;
+        color: white;
+        text-align: left;
+    }
+    .tabb td {
+        color: black;
+    }
+    .media{
+        border-radius: 10px;
+        margin-top: 60px;
+        padding: 20px;
+        background-color: white;
+        box-shadow:0 20px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .v1 {
+        font-weight: 600;
+        font-size: 40px;
+        margin-top: 10px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .v2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    .media iframe{
+        border-radius: 10px;
+    }
+    .form-div {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 500px;
+        background: #fff;
+        padding: 50px;
+        border-radius: 10px;
+        margin-top: 40px;
+        border: 3px solid #4CAF50;
+    }
+
+    .form-div form {
+        max-width: 500px;
+        display: grid;
+        gap: 20px;
+    }
+
+    .form-div input, .form-div select, .form-div textarea {
+        padding: 15px;
+        font-size: 16px;
+        border: 1px solid #4CAF50;
+        border-radius: 8px;
+    }
+
+    .form-div button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px;
+        font-size: 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .form-div button:hover {
+        background-color: #388E3C;
+    }
+
+    .tip {
+        font-size: 18px;
+        background-color: #fff;
+        padding: 20px;
+        border-left: 6px solid #4CAF50;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        color: black;
+    }
+
+    .tip:hover {
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .part1 {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        justify-content: center;
+        background-color: #fff;
+        animation: slideDown 4s ease-out forwards;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .part11, .part12 {
+        flex: 1 1 500px;
+        max-width: 600px;
+        box-sizing: border-box;
+    }
+
+    .part11 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+        font-weight: bolder;
+        font-size: 40px;
+        line-height: 1.5;
+    }
+
+    .part12 {
+        height: 500px;
+    }
+
+    .part12 img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .nutrition-section {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .nutrition-table {
+        display: grid;
+        font-size: 18px;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        max-width: 900px;
+        margin-bottom: 50px;
+    }
+
+    .nutri1 {
+        color: black;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        background-color: #fff;
+        padding: 20px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(76, 175, 80, 0.1);
+        transition: transform 0.3s;
+    }
+
+    .nutri1:hover {
+        transform: translateY(-4px);
+    }
+
+    .nutrition-table .nutri1:first-child { 
+        background-color: #4CAF50 !important;
+        color: white !important;
+    }
+
+    .hero {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 2rem;
+        animation: myani 1s ease;
+    }
+
+    .hero img {
+        max-width: 600px;
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-text {
+        max-width: 600px;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero p {
+        margin-bottom: 2rem;
+        font-size: 20px;
+        color: black;
+    }
+
+    .hero button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 1s;
+        font-size: 1rem;
+    }
+
+    .hero button:hover {
+        background-color: #388E3C;
+    }
+
+    @keyframes myani {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+</head>
+<body>
+<section class="hero">
+    <div class="hero-text">
+        <h2 style="font-size: 50px;">AGRICULTURE FEEDING</h2>
+        <p>Balanced nutrient application ensures strong crop growth, soil health, and high yield.</p>
+        <button onclick="scrolltosection()">Get Started</button>
+    </div>
+    <img src="./FeedBanner7.webp" alt="Agriculture Feeding Banner">
+</section>
+
+<div class="feed1">
+    <div class="one">
+        <h1 class="tex1">🌱 Crop Nutrition Practices</h1>
+        <p class="tex2">Feeding your crops involves planned fertilization and organic soil improvement methods.</p>
+        <p class="tex3">Each crop and soil type requires tailored nutrition for best results.</p>
+    </div>
+    <div id="targetSec">
+    <h1 class="tex4">🌿 Common Feeding Options in Agriculture</h1>
+    <div class="gallery">
+        <div class="card">
+            <h4>💩 Organic Manure</h4>
+            <p>Farmyard manure, compost, and green manure improve soil structure and fertility naturally.</p>
+        </div>
+        <div class="card">
+            <h4>🧪 Chemical Fertilizers</h4>
+            <p>Includes NPK fertilizers, urea, and DAP for targeted nutrient delivery.</p>
+        </div>
+        <div class="card">
+            <h4>🧬 Biofertilizers</h4>
+            <p>Microorganism-based fertilizers like Azospirillum enhance soil microflora and nutrient availability.</p>
+        </div>
+        <div class="card">
+            <h4>🌊 Foliar Sprays</h4>
+            <p>Sprayed directly on leaves for quick nutrient absorption during critical stages.</p>
+        </div>
+    </div>
+
+    <h1 class="tex5">📆 Fertilizer Schedule by Growth Stage</h1>
+    <table class="tabb">
+        <tr><th>Crop Stage</th><th>Fertilizer Recommendation</th></tr>
+        <tr><td>Pre-sowing</td><td>Organic manure and basal dose of NPK</td></tr>
+        <tr><td>Vegetative</td><td>Urea and biofertilizer application</td></tr>
+        <tr><td>Flowering</td><td>Micronutrient sprays and potassium-based fertilizers</td></tr>
+        <tr><td>Fruiting/Maturity</td><td>Low nitrogen, high phosphorus support</td></tr>
+    </table>
+
+    <div class="media">
+        <div class="v1">🎥 Agriculture Feeding - Demo Video</div>
+        <div class="v2">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/mDIVpJgjoXQ?si=U0Y7RTxzzTmHl2J3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <h1 class="tex6" style="margin-top: 60px; text-align: center;">📋 Feed Activity Log</h1>
+    <div class="form-div">
+        <form>
+            <select>
+                <option>Select Feed Type</option>
+                <option>Organic Manure</option>
+                <option>Chemical Fertilizer</option>
+                <option>Biofertilizer</option>
+                <option>Foliar Spray</option>
+            </select>
+            <input type="date" placeholder="Application Date" />
+            <input type="text" placeholder="Quantity (e.g. 2 tons, 50kg)" />
+            <textarea placeholder="Additional Notes"></textarea>
+            <button type="submit" onclick="fun()">Log Activity</button>
+        </form>
+    </div>
+
+    <div class="nutrition-section">
+        <h1 class="tex8">🌾 Nutrient Value of Feed Types</h1>
+        <p class="tex9">Each feeding method provides specific benefits to soil and crop.</p>
+        <div class="nutrition-table">
+            <div class="nutri1" style="font-weight: bold;">
+                <div>Feed Type</div>
+                <div>Key Nutrients</div>
+                <div>Benefits</div>
+            </div>
+            <div class="nutri1"><div>💩 Organic Manure</div><div>Carbon, Nitrogen</div><div>Improves soil health & moisture retention</div></div>
+            <div class="nutri1"><div>🧪 Chemical Fertilizers</div><div>N, P, K</div><div>Rapid nutrient boost to crops</div></div>
+            <div class="nutri1"><div>🧬 Biofertilizers</div><div>Rhizobacteria, Fungi</div><div>Fixes nitrogen, improves root health</div></div>
+            <div class="nutri1"><div>🌊 Foliar Spray</div><div>Zinc, Iron, Potassium</div><div>Quick relief for nutrient deficiency</div></div>
+        </div>
+    </div>
+
+    <h1 class="tex7">💡 Best Practices for Fertilization</h1>
+    <div class="tip">✅ Always test soil before fertilizer application.</div>
+    <div class="tip">✅ Avoid excessive nitrogen to prevent pest outbreaks.</div>
+    <div class="tip">✅ Combine organic and inorganic methods for sustainable farming.</div>
+    <div class="tip">✅ Water after fertilizer use for proper absorption.</div>
+    <div class="tip">✅ Record every application for traceability and better yield planning.</div>
+</div>
+</div>
+<script>
+function fun() {
+    alert("✅ Agriculture feed activity logged successfully. Happy farming! 🌾");
+}
+function scrolltosection() {
+    const section = document.getElementById("targetSec");
+    section.scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
+</body>
+</html>

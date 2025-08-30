@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather & Its Impact on Dairy Farming</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+       *{
+        margin: 0px;
+        padding: 0px;
+        
+       font-family: 'poppins', sans-serif;
+        }
+        body{
+            background-color: #fdf7e3;
+        }
+.header{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #8d6e63;
+}
+.navigation{
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    align-items: center;
+    /* justify-content: space-between; */
+    gap: 50px;
+}
+.tags{
+    color: #8d6e63;
+    text-decoration: none;
+    font-size: large;
+    display: block;
+}
+.tags:hover{
+    color: #5b4740;
+}
+.drop{
+    position: relative;
+    z-index: 999;
+}
+.dropdown{
+    font-size: 20px;
+    border-radius: 10px;
+    display: none;
+    background-color:#fdf7e3
+;
+    position: absolute;
+    border-bottom: 1px solid gray;
+}
+.drop:hover .dropdown{
+    display: block;
+}
+.dropdown a{
+    text-decoration: none;
+    color: #8d6e63
+;
+    padding: 10px;
+
+}
+.dropdown a:hover{
+    color: #b7978c
+;
+}
+.profile{
+    color: #8d6e63;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    background-color:#fdf7e3;
+    border-radius: 5px;
+    padding: 10px;
+}
+.profile:hover{
+    color: white;
+    background-color: #fdf7e3;
+}
+.bars{
+    display: none;
+    color: #8d6e63;
+    font-size: 30px;
+    text-decoration: none;
+}
+.menu_options{
+    position: absolute;
+    top:0px;
+    left:-320px;
+    width: 300px;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: end;
+    background-color: #b19388;
+    transition: left 0.8s linear;
+    z-index: 999;
+}
+.menu_options div{
+    border-bottom: 1px solid white;
+    border-radius: 5px;
+    width: 100%;
+}
+.menu_options a:hover{
+    color: #b39387;
+}
+span{
+    font-size: 50px;
+    cursor: pointer;
+        width: fit-content;
+        color: #8d6e63;
+    }
+    .menu_options a{
+        color: #8d6e63;
+        text-decoration: none;
+        font-size: 20px;
+        padding: 10px;
+    }
+    .drop1{
+        position: relative;
+    }
+    .dropdown1{
+        display: none;
+        background-color:#fdf7e3
+;
+        position: absolute;
+        border-bottom: 1px solid gray;
+    }
+    .drop1:hover .dropdown1{
+        display: block;
+    }
+    .dropdown1 a{
+        text-decoration: none;
+        color: #8d6e63;
+        display: flex;
+        flex-direction: column;
+        font-size: 16px;
+    
+    }
+.dropdown1 a:hover{
+    color: #9f7f73;
+}
+@media (min-width:320px) and (max-width:920px)
+{
+    .tags{
+        display: none;
+    }
+    .profile{
+        display: none;
+    }
+    .bars{
+        display: block;
+    }
+}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #8d6e63;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #fdf7e3;
+            color: #8d6e63;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn:hover {
+            background: #fdf7e3;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(32, 27, 20, 0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color:#8d6e63;
+        }
+
+        .bg-white {
+            background: #fdf7e3;
+        }
+
+        .bg-gray {
+            background: #f9fafb;
+        }
+
+        /* Weather Cards */
+        .weather-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .weather-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px black;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .weather-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 100px 100px rgba(0,0,0,0.2);
+        }
+
+        .weather-image {
+            width: 100%;
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+         .weather-image.summer {
+            background-image: url("https://cdn.firstcry.com/education/2022/04/29104151/1007648908.jpg");
+        }
+
+        .weather-image.winter {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTKWC1kVKBi_Hee_XF7hdpxN2nmSE9_jwclQ&s');
+        }
+
+        .weather-image.rainy {
+            background-image: url('data:image/jpeg;base64,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');
+        }
+
+        .weather-image.extreme {
+            background-image: url('https://images.unsplash.com/photo-1527482797697-8795b05a13fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80');
+        }
+
+        .weather-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8d6e63;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .weather-content {
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .weather-content h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #8d6e63;
+        }
+
+        .weather-content p {
+            color:#8d6e63;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        /* Impact Sections */
+        .impact-section {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+        .impact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        .impact-content:hover{
+             transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 100px 100px rgba(0,0,0,0.2);
+             background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px black;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+             
+        }
+
+        .impact-text {
+            padding: 3rem;
+        }
+
+        .impact-text h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .impact-text.heat h3 {
+            color: #8d6e63;
+        }
+
+        .impact-text.cold h3 {
+            color: #8d6e63;
+        }
+
+        .impact-text.rain h3 {
+            color: #8d6e63;
+
+        }
+
+        .impact-text.storm h3 {
+            color: #8d6e63;
+        }
+
+        .impact-text p {
+            color: #8d6e63;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .precautions {
+            background-color: #fdf7e3;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .precautions h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #8d6e63;
+        }
+
+        .precautions ul {
+            list-style: none;
+        }
+
+        .precautions li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .precautions li::before {
+            content: "✓";
+            color: #8d6e63;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .impact-visual {
+            background-size: cover;
+            background-position: center;
+            min-height: 400px;
+        }
+
+        .impact-visual.heat {
+            background-image: url('https://www.shutterstock.com/image-photo/cow-on-green-grass-evening-600nw-129388601.jpg');
+        }
+
+        .impact-visual.cold {
+            background-image: url('https://media.istockphoto.com/id/928179780/photo/dairy-cattle-in-snow.jpg?s=612x612&w=0&k=20&c=c6mU9fDuoV6R5UFte-6Zn0EW2AkChaKMdiRlJXHXyXI=');
+        }
+
+        .impact-visual.rain {
+            background-image: url('https://images.stockcake.com/public/5/9/c/59c5fa4f-ed7d-4b4e-a432-a622f965a542_large/rainy-farm-day-stockcake.jpg');
+        }
+
+        .impact-visual.storm {
+            background-image: url('https://images.unsplash.com/photo-1527482797697-8795b05a13fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80');
+        }
+
+
+        /* Data Section */
+         /* Data Section */
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .chart-container {
+            background: #f9fafb;
+            padding: 2rem;
+            border-radius: 20px;
+        }
+
+        .chart-container h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #8d6e63;
+        }
+
+        .chart {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            height: 250px;
+            margin-bottom: 1rem;
+        }
+
+        .chart-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60px;
+        }
+
+        .bar {
+            width: 100%;
+            border-radius: 5px 5px 0 0;
+            margin-bottom: 0.5rem;
+            transition: all 0.8s ease;
+            transform: scaleY(0);
+            transform-origin: bottom;
+        }
+
+        .bar.green {
+            background: #8d6e63;
+        }
+
+        .bar.yellow {
+            background: #8d6e63;
+        }
+
+        .bar.orange {
+            background:#8d6e63;
+        }
+
+        .bar.red {
+            background: #8d6e63;
+        }
+
+        .bar.dark-red {
+            background: #8d6e63;
+        }
+
+        .chart-label {
+            font-size: 0.9rem;
+            color: #8d6e63;
+            text-align: center;
+        }
+
+        .chart-value {
+            font-size: 0.8rem;
+            color: #8d6e63;
+            margin-top: 0.25rem;
+        }
+
+        .chart-description {
+            font-size: 0.9rem;
+            color: #8d6e63;
+            text-align: center;
+        }
+
+        /* Live Chart Styles */
+        .live-chart-container {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color:black;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background:  #fdf7e3;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .current-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .temp-display {
+            color: black;
+            font-weight: 500;
+            display: flex;
+            justify-content: end;
+        }
+
+        .production-display {
+            color: black;
+            font-weight: 500;
+        }
+
+        #liveChart {
+            width: 100%;
+            height: 200px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+
+        .chart-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .chart-btn {
+            padding: 8px 16px;
+            background: #8d6e63;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chart-btn:hover {
+            background: #fdf7e3;
+            transform: translateY(-1px);
+        }
+
+        /* Success Story */
+        .success-story {
+            background: linear-gradient(135deg, #f0fdf4, #dbeafe);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .success-story h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #8d6e63;
+        }
+
+        .farmer-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .farmer-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            overflow: hidden;
+            background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=387&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .farmer-details h4 {
+            font-weight: 600;
+            color: #8d6e63;
+        }
+
+        .farmer-details p {
+            color: #8d6e63;
+            font-size: 0.9rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #8d6e63;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .results {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .results h5 {
+            font-weight: 600;
+            color: #8d6e63;
+            margin-bottom: 1rem;
+        }
+
+        .results ul {
+            list-style: none;
+        }
+
+        .results li {
+            font-size: 0.9rem;
+            color: #8d6e63;
+            margin-bottom: 0.5rem;
+        }
+
+        .results li::before {
+            content: "•";
+            color: #8d6e63;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+
+        /* Tools Section */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+             background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px black;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tool-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .tool-image.weather-app {
+            background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+        }
+
+        .tool-image.weather-station {
+            background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+        }
+
+        .tool-image.alerts {
+            background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+        }
+
+        .tool-content {
+            padding: 2rem;
+        }
+
+        .tool-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #8d6e63;
+        }
+
+        .tool-content p {
+            color: #8d6e63;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-tool {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background:#8d6e63;
+            color: #fdf7e3;
+            display: flexbox;
+            justify-items: center;
+        }
+
+        .btn-tool:hover {
+            background-color: #8d6e63;
+            transform: translateY(-2px);
+        }
+
+        .btn-tool.green {
+            background-color:#8d6e63;
+        }
+
+        .btn-tool.green:hover {
+            background-color: #8d6e63;
+        }
+
+        .btn-tool.purple {
+            background-color: #8d6e63;
+        }
+
+        .btn-tool.purple:hover {
+            background: #8d6e63;
+        }
+
+        /* Solutions Table */
+        .solutions-container {
+            background-color: #fdf7e3;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 2rem;
+        }
+
+        .solutions-table {
+            width: 100%;
+            height: auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .solutions-table th {
+            background: #f9fafb;
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            color: #1f2937;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .solutions-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 15px;
+        }
+
+        .solutions-table tr {
+            transition: all 0.3s ease;
+        }
+
+        .solutions-table tr:hover {
+            background: rgba(34, 197, 94, 0.05);
+            transform: scale(1.01);
+        }
+
+        .challenge-item {
+            display: flex;
+            align-items: center;
+            
+        }
+
+        .challenge-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .challenge-icon.heat {
+            background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80');
+        }
+
+        .challenge-icon.cold {
+            background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80');
+        }
+
+        .challenge-icon.rain {
+            background-image: url('https://images.unsplash.com/photo-1519692933481-e162a57d6721?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80');
+        }
+
+        .challenge-icon.humidity {
+            background-image: url('https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80');
+        }
+
+        .challenge-icon.storm {
+            background-image: url('https://images.unsplash.com/photo-1527482797697-8795b05a13fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80');
+        }
+
+        .challenge-icon.temp {
+            background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80');
+        }
+
+        .challenge-text {
+             font-size: 15px;
+            color: black;
+
+
+        }
+
+        /* Footer */
+        .footer {
+            background-color:#8d6e63 ;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+       .footer{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #8d6e63;
+    padding: 30px 0px;
+    gap: 25px;
+    transition: transform 1s linear;
+}
+.foot{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+   gap: 20px 0px;
+}
+.links{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px 50px;
+}
+.com{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 10px 0px;
+    padding: 0px 20px;
+}
+.com11{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 10px 0px;
+     padding: 0px 15px;
+}
+.com1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px 10px ;
+}
+.copy{
+    font-size: 16px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+footer a:hover{
+   transform: translateY(-5px);
+   text-shadow: 0px 0px 5px white;
+}
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-bars .bar {
+            transform: scaleY(1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .weather-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .impact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+
+            .weather-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+            <div class="header">
+               <a href="Home.html"><img src="Logo.png"  width="160px"></a>
+                <nav class="navigation">
+                        <a href="Home.html" class="tags"><b>Home</b></a>
+                        <div class="drop" ><a class="tags" href="Home.html"><b>Categories</b></a>
+                            <div class="dropdown">
+                          <a href="Agriculture.html">Agriculture</a>
+                           <a href="Aquaculture.html">Aquaculture</a>
+                           <a href="Sericulture.html">Sericulture</a>
+                           <a href="Apiculture.html">Apiculture</a>
+                           <a href="Dairy_Poultry.html">Poultry</a>
+                           <a href="Organic.html">Dairy</a>
+                            </div>
+                            </div>
+                        <a href="Home.html" class="tags"><b>Weather</b></a>
+                        <a href="Home.html" class="tags"><b>Market</b></a>
+                        <a href="iship.html" class="tags"><b>About</b></a>
+                        <a href="Home.html" class="tags"><b>Contact Us</b></a>
+                        <a href="Home.html" class="profile"><b>Login</b></a>
+                </nav>
+                <div onclick="Open()" style="padding-top: 45px;" class="bars"><i class="fa-solid fa-bars"></i></div>
+                <div class="menu_options">
+                <span onclick="Close()">&times;</span>
+                <div><a href="Home.html"><b>Home</b></a></div>
+                         <div class="drop1"><a href="Home.html"><b>Categories</b></a>
+                            <div class="dropdown1">
+                            <a href="Agriculture.html">Agriculture</a>
+                           <a href="Aquaculture.html">Aquaculture</a>
+                           <a href="Sericulture.html">Sericulture</a>
+                           <a href="Apiculture.html">Apiculture</a>
+                           <a href="Dairy_Poultry.html">Poultry</a>
+                           <a href="Organic.html">Dairy</a>
+                            </div>
+                        </div>
+                        <div><a href="Home.html"><b>Weather</b></a></div>
+                        <div><a href="Home.html"><b>Market</b></a></div>
+                        <div><a href="Home.html"><b>About</b></a></div>
+                        <div><a href="Home.html"><b>Contact Us</b></a></div>
+                        <div><a href="Home.html"><b>Login</b></a></div>
+              </div>
+             <script>
+            function Close(){
+                document.getElementsByClassName("menu_options")[0].style.left="-320px";
+            }
+             function Open(){
+                document.getElementsByClassName("menu_options")[0].style="left:0px";
+            }
+            </script>
+            </div>
+        </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>How Weather Affects Dairy Farming</h1>
+            <p>Understanding climate challenges for better milk yield and animal health</p>
+            <button class="btn" onclick="scrollToSection()">Learn More</button>
+        </div>
+    </section>
+
+    <!-- Weather Types Section -->
+    <section class="section bg-white">
+        <div class="container">
+            <h2 class="section-title fade-in">Weather Impact Categories</h2>
+            
+            <div class="weather-grid">
+                <div class="weather-card fade-in">
+                    <div class="weather-image summer">
+                        <div class="weather-overlay">Summer Heat</div>
+                    </div>
+                    <div class="weather-content">
+                        <h3>High Temperature Impact</h3>
+                        <p>High temperatures reduce milk production and cause heat stress in dairy cows, leading to decreased feed intake and compromised reproductive performance.</p>
+                    </div>
+                </div>
+                
+                <div class="weather-card fade-in">
+                    <div class="weather-image winter">
+                        <div class="weather-overlay">Winter Cold</div>
+                    </div>
+                    <div class="weather-content">
+                        <h3>Cold Weather Effects</h3>
+                        <p>Cold weather increases energy needs and affects feed intake patterns, requiring additional calories for maintaining body temperature.</p>
+                    </div>
+                </div>
+                
+                <div class="weather-card fade-in">
+                    <div class="weather-image rainy">
+                        <div class="weather-overlay">Rainy Season</div>
+                    </div>
+                    <div class="weather-content">
+                        <h3>Monsoon Challenges</h3>
+                        <p>Excessive moisture creates hygiene issues and affects pasture quality, increasing disease risk and hoof problems.</p>
+                    </div>
+                </div>
+                
+                <div class="weather-card fade-in">
+                    <div class="weather-image extreme">
+                        <div class="weather-overlay">Extreme Weather</div>
+                    </div>
+                    <div class="weather-content">
+                        <h3>Storm & Cyclone Impact</h3>
+                        <p>Cyclones and floods pose serious threats to livestock and infrastructure, requiring emergency preparedness protocols.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Impact Sections -->
+    <section class="section bg-gray">
+        <div class="container">
+            <h2 class="section-title fade-in">Detailed Weather Impact Analysis</h2>
+            
+            <!-- Heat Impact -->
+            <div class="impact-section fade-in">
+                <div class="impact-content">
+                    <div class="impact-text heat">
+                        <h3>Heatwave Impact on Dairy Cows</h3>
+                        <p>When temperatures exceed 25°C (77°F), dairy cows experience heat stress, leading to reduced feed intake, decreased milk production, and compromised reproductive performance. Heat stress can reduce milk yield by up to 35% during peak summer months.</p>
+                        <div class="precautions">
+                            <h4>Key Precautions:</h4>
+                            <ul>
+                                <li>Install cooling systems and fans</li>
+                                <li>Provide adequate shade structures</li>
+                                <li>Increase water availability</li>
+                                <li>Adjust feeding schedules to cooler hours</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="impact-visual heat"></div>
+                </div>
+            </div>
+            
+            <!-- Cold Impact -->
+            <div class="impact-section fade-in">
+                <div class="impact-content">
+                    <div class="impact-visual cold"></div>
+                    <div class="impact-text cold">
+                        <h3>Winter Cold Effects on Dairy Production</h3>
+                        <p>Cold temperatures below 5°C (41°F) increase energy requirements for maintaining body temperature. Cows need additional calories, affecting feed conversion efficiency and potentially reducing milk fat content if nutrition isn't properly managed.</p>
+                        <div class="precautions">
+                            <h4>Essential Measures:</h4>
+                            <ul>
+                                <li>Provide windbreaks and shelter</li>
+                                <li>Increase energy-rich feed</li>
+                                <li>Ensure unfrozen water access</li>
+                                <li>Monitor for frostbite on udders</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rain Impact -->
+            <div class="impact-section fade-in">
+                <div class="impact-content">
+                    <div class="impact-text rain">
+                        <h3>Monsoon Challenges in Dairy Farming</h3>
+                        <p>Excessive rainfall creates muddy conditions, increases disease risk, and affects pasture quality. High humidity combined with moisture promotes bacterial growth, leading to mastitis and hoof problems in dairy cattle.</p>
+                        <div class="precautions">
+                            <h4>Prevention Strategies:</h4>
+                            <ul>
+                                <li>Improve drainage systems</li>
+                                <li>Regular hoof trimming and care</li>
+                                <li>Maintain dry bedding areas</li>
+                                <li>Enhanced hygiene protocols</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="impact-visual rain"></div>
+                </div>
+            </div>
+            
+            <!-- Extreme Weather Impact -->
+            <div class="impact-section fade-in">
+                <div class="impact-content">
+                    <div class="impact-visual storm"></div>
+                    <div class="impact-text storm">
+                        <h3>Extreme Weather Emergency Response</h3>
+                        <p>Cyclones, floods, and severe storms pose immediate threats to livestock safety and farm infrastructure. Emergency preparedness and quick response protocols are essential for minimizing losses and ensuring animal welfare.</p>
+                        <div class="precautions">
+                            <h4>Emergency Actions:</h4>
+                            <ul>
+                                <li>Develop evacuation plans</li>
+                                <li>Secure emergency feed supplies</li>
+                                <li>Install early warning systems</li>
+                                <li>Maintain insurance coverage</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Data & Charts Section -->
+     <section class="section bg-white">
+        <div class="container">
+            <h2 class="section-title fade-in">Production Data & Farmer Insights</h2>
+            
+            <div class="data-grid">
+                <div class="chart-container fade-in">
+                    <h3>Live Temperature & Production Monitor</h3>
+                    <div class="live-chart-container">
+                        <div class="chart-header">
+                            <div class="live-indicator">
+                                <div class="pulse-dot"></div>
+                                <span>LIVE DATA</span>
+                            </div>
+                            <div class="current-stats">
+                                <span class="temp-display">Current: <span id="currentTemp">24°C</span></span>
+                                <span class="production-display">Production: <span id="currentProduction">19L</span></span>
+                            </div>
+                        </div>
+                        <canvas id="liveChart" width="400" height="200"></canvas>
+                        <div class="chart-controls">
+                            <button class="chart-btn" onclick="toggleChart()">Pause/Resume</button>
+                            <button class="chart-btn" onclick="resetChart()">Reset Data</button>
+                        </div>
+                    </div>
+<p class="chart-description">Real-time simulation showing temperature impact on fish growth and survival</p>
+                </div>
+                
+                <div class="success-story fade-in">
+                    <h3>Farmer Success Story</h3>
+                    <div class="farmer-info">
+                        <div class="farmer-avatar"></div>
+                        <div class="farmer-details">
+                            <h4>Rajesh Kumar</h4>
+                            <p>Aqua Farmer, AndhraPradesh</p>
+                        </div>
+                    </div>
+                    <blockquote class="quote">
+Using aeration systems and weather-based feeding improved fish growth by 28% during summer, making the investment profitable within a year.”                    </blockquote>
+                    <div class="results">
+                        <h5>Key Results:</h5>
+<ul>
+    <li>28% increase in summer fish growth rate</li>
+    <li>40% reduction in fish mortality due to heat stress</li>
+    <li>₹2.5 lakh additional annual revenue from improved yield</li>
+</ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Weather Tools Section -->
+    <section class="section bg-gray">
+        <div class="container">
+            <h2 class="section-title fade-in">Essential Weather Tools for Farmers</h2>
+            
+            <div class="tools-grid">
+                <div class="tool-card fade-in">
+                    <div class="tool-image weather-app"></div>
+                    <div class="tool-content">
+                        <h3>IMD Weather App</h3>
+                        <p>Official weather forecasts and alerts from India Meteorological Department with location-specific predictions for dairy farmers.</p>
+                        <button class="btn-tool">Download App</button>
+                    </div>
+                </div>
+                
+                <div class="tool-card fade-in">
+                    <div class="tool-image weather-station"></div>
+                    <div class="tool-content">
+                        <h3>Smart Weather Station</h3>
+                        <p>An IoT-enabled weather monitoring system designed specifically for farmers, providing real-time data on temperature, humidity, 
+                            and rainfall directly from your farm.</p>
+                        <button class="btn-tool green">Learn More</button>
+                    </div>
+                </div>
+                
+                <div class="tool-card fade-in">
+                    <div class="tool-image alerts"></div>
+                    <div class="tool-content">
+                        <h3>Weather Alerts</h3>
+                        <p>Automated SMS and app notifications for extreme weather conditions and farming advisories to protect your livestock.  minimizing weather-related risks.</p>
+                        <button class="btn-tool purple">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Table Section -->
+    <section class="section bg-white">
+        <div class="container">
+            <h2 class="section-title fade-in">Weather Solutions Guide</h2>
+            
+            <div class="solutions-container fade-in">
+                <table class="solutions-table">
+                    <thead>
+                        <tr>
+                            <th>Weather Challenge</th>
+                            <th>Recommended Solution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="challenge-item">
+                                    <div class="challenge-icon heat"></div>
+                                    <span class="challenge-text">Extreme Heat (>30°C)</span>
+                                </div>
+                            </td>
+                            <td>Install cooling fans, provide shade structures, increase water availability</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="challenge-item">
+                                    <div class="challenge-icon cold"></div>
+                                    <span class="challenge-text">Severe Cold (<5°C)</span>
+                                </div>
+                            </td>
+                            <td>Provide windbreaks, increase energy-rich feed, ensure heated water sources</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="challenge-item">
+                                    <div class="challenge-icon rain"></div>
+                                    <span class="challenge-text">Heavy Rainfall</span>
+                                </div>
+                            </td>
+                            <td>Install proper drainage systems, maintain dry bedding, regular hoof care</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="challenge-item">
+                                    <div class="challenge-icon humidity"></div>
+                                    <span class="challenge-text">High Humidity</span>
+                                </div>
+                            </td>
+                            <td>Improve ventilation, use dehumidifiers, monitor for respiratory issues</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="challenge-item">
+                                    <div class="challenge-icon storm"></div>
+                                    <span class="challenge-text">Cyclones/Storms</span>
+                                </div>
+                            </td>
+                            <td>Develop evacuation plans, secure structures, maintain emergency feed supplies</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="challenge-item">
+                                    <div class="challenge-icon temp"></div>
+                                    <span class="challenge-text">Temperature Fluctuations</span>
+                                </div>
+                            </td>
+                            <td>Monitor weather forecasts, adjust feeding schedules, use climate control systems</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+            <div class="footer">
+                <div class="foot">
+                    <div class="links">
+                        <div class="com">
+                            <div style=" color: white; font-size: 18px; font-family: Arial, Helvetica, sans-serif; "><b>Quick Links</b></div>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; ">Home</a>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; ">Weather</a>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; ">Market</a>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; ">About</a>
+                        </div>
+                        <div class="com">
+                            <div style=" color: white; font-size: 18px; font-family: Arial, Helvetica, sans-serif; "><b>Resources</b></div>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; ">FAQ's</a>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; ">Blogs</a>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; ">Guidelines</a>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; ">Terms & Conditions</a>
+                        </div>
+                        <div class="com11">
+                            <div style="color: white; font-size: 18px; font-family: Arial, Helvetica, sans-serif"><b>Contact</b></div>
+                             <div style="color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; cursor: pointer;">📞 Call: +91 8096542356</div>
+                              <div style="color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; cursor: pointer;">📧 Email: support@agriassist.com</div>
+                        </div>
+                        <div class="com">
+                            <div style="color: white; font-size: 18px; font-family: Arial, Helvetica, sans-serif"><b>Follow Us</b></div>
+                            <div class="com1">
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif; "><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif; "><i class="fa-brands fa-facebook"></i></a>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif; "><i class="fa-brands fa-youtube"></i></a>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif; "><i class="fa-brands fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo"><img src="Logo.png" width="250px" height="200px"></div>
+                </div>
+                 <hr/>
+                <div class="copy">&copy; 2025 AgriAssist. All rights reserved.</div>
+            </div>
+        </footer>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(function(el) {
+            observer.observe(el);
+        });
+
+        // Live Chart Implementation
+        let liveChart = null;
+        let chartData = [];
+        let isChartRunning = true;
+        let chartInterval = null;
+
+        function initLiveChart() {
+            const canvas = document.getElementById('liveChart');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            liveChart = ctx;
+            
+            // Set canvas size
+            canvas.width = canvas.offsetWidth;
+            canvas.height = 200;
+            
+            // Initialize with some data points
+            for (let i = 0; i < 20; i++) {
+                chartData.push({
+                    temp: 20 + Math.random() * 15,
+                    production: 15 + Math.random() * 10
+                });
+            }
+            
+            drawChart();
+            startLiveUpdates();
+        }
+
+        function drawChart() {
+            if (!liveChart) return;
+            
+            const canvas = document.getElementById('liveChart');
+            const ctx = liveChart;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw grid
+            ctx.strokeStyle = '#e5e7eb';
+            ctx.lineWidth = 1;
+            
+            // Vertical grid lines
+            for (let i = 0; i <= 10; i++) {
+                const x = (canvas.width / 10) * i;
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+                ctx.stroke();
+            }
+            
+            // Horizontal grid lines
+            for (let i = 0; i <= 5; i++) {
+                const y = (canvas.height / 5) * i;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.stroke();
+            }
+            
+            if (chartData.length < 2) return;
+            
+            // Draw temperature line (red)
+            ctx.strokeStyle = '#dc2626';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            
+            chartData.forEach((point, index) => {
+                const x = (canvas.width / (chartData.length - 1)) * index;
+                const y = canvas.height - ((point.temp - 15) / 20) * canvas.height;
+                
+                if (index === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            ctx.stroke();
+            
+            // Draw production line (blue)
+            ctx.strokeStyle = '#2563eb';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            
+            chartData.forEach((point, index) => {
+                const x = (canvas.width / (chartData.length - 1)) * index;
+                const y = canvas.height - ((point.production - 10) / 20) * canvas.height;
+                
+                if (index === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            ctx.stroke();
+            
+            // Draw legend
+            ctx.font = '12px Inter';
+            ctx.fillStyle = '#dc2626';
+            ctx.fillText('Temperature (°C)', 10, 20);
+            ctx.fillStyle = '#2563eb';
+            ctx.fillText('Production (L)', 10, 35);
+        }
+
+        function startLiveUpdates() {
+            chartInterval = setInterval(() => {
+                if (!isChartRunning) return;
+                
+                // Generate new data point
+                const lastTemp = chartData[chartData.length - 1]?.temp || 25;
+                const newTemp = Math.max(15, Math.min(35, lastTemp + (Math.random() - 0.5) * 3));
+                
+                // Production inversely related to temperature
+                const baseProduction = 30 - (newTemp - 15) * 0.8;
+                const newProduction = Math.max(8, baseProduction + (Math.random() - 0.5) * 2);
+                
+                chartData.push({
+                    temp: newTemp,
+                    production: newProduction
+                });
+                
+                // Keep only last 20 points
+                if (chartData.length > 20) {
+                    chartData.shift();
+                }
+                
+                // Update display values
+                document.getElementById('currentTemp').textContent = Math.round(newTemp) + '°C';
+                document.getElementById('currentProduction').textContent = Math.round(newProduction) + 'L';
+                
+                drawChart();
+            }, 1000);
+        }
+
+        function toggleChart() {
+            isChartRunning = !isChartRunning;
+        }
+
+        function resetChart() {
+            chartData = [];
+            for (let i = 0; i < 20; i++) {
+                chartData.push({
+                    temp: 20 + Math.random() * 15,
+                    production: 15 + Math.random() * 10
+                });
+            }
+            drawChart();
+        }
+
+        // Smooth scroll function
+        function scrollToSection() {
+            const targetSection = document.querySelector('.section:nth-of-type(2)');
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Add click handlers for tool buttons
+        document.querySelectorAll('.btn-tool').forEach(function(button) {
+            button.addEventListener('click', function() {
+                const buttonText = this.textContent.trim();
+                if (buttonText.includes('Download')) {
+                    alert('Redirecting to app store...');
+                } else if (buttonText.includes('Learn More')) {
+                    alert('Opening detailed information...');
+                } else if (buttonText.includes('Subscribe')) {
+                    alert('Opening subscription form...');
+                }
+            });
+        });
+
+        // Initialize animations on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add staggered animation delays to weather cards
+            const weatherCards = document.querySelectorAll('.weather-card');
+            weatherCards.forEach(function(card, index) {
+                card.style.animationDelay = (index * 0.2) + 's';
+            });
+
+            // Add staggered animation delays to tool cards
+            const toolCards = document.querySelectorAll('.tool-card');
+            toolCards.forEach(function(card, index) {
+                card.style.animationDelay = (index * 0.2) + 's';
+            });
+
+            // Initialize live chart
+            setTimeout(initLiveChart, 1000);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'966be7845425a908',t:'MTc1Mzc4NDY0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

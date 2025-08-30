@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartCultivo Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <!-- Link to the external CSS file -->
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* General styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Body styling */
+body {
+      background-color: #89947d94; /* white background */
+
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  animation: fadeIn 1.5s ease-in-out;
+}
+/* Login container styling */
+.login-container {
+  background: rgba(13, 151, 45, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+  padding: 40px;
+  width: 90%;
+  max-width: 400px;
+  color: white;
+  animation: slideUp 1s ease-in-out;
+  transition: transform 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
+  text-align: center;
+  text-shadow: 4px 4px 8px rgba(48, 46, 46, 0.7), /* Red shadow with some transparency */
+                  -4px -4px 8px rgba(57, 53, 53, 0.3);
+}
+
+.login-container:hover{
+    transform: translateY(-4px) ;
+     box-shadow:  0 0 20px rgba(37, 3, 3, 0.6);
+}
+
+/* Logo styling */
+.logo {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-shadow: 2px 2px #0288d1;
+}
+
+/* Heading styling */
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* Input field styling */
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  color: #023047;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+input::placeholder {
+  color: #023047b0;
+}
+
+input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Button styling */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  background: #0288d1;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 10px #0288d1aa;
+}
+
+button:hover {
+  background: #01579b;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #01579b;
+}
+
+/* Links section styling */
+.links {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(100px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive adjustments for smaller screens */
+@media(max-width: 500px) {
+  .login-container {
+    padding: 25px;
+  }
+
+  .logo {
+    font-size: 2rem;
+  }
+}
+
+/* Specific style for the "Forgot Password?" link */
+.forget {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: red;
+}
+.logopic{
+    height: 140px;
+    width: 180px;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div><img class="logopic" src="logo.png" alt=""></div>
+    <h1>Login</h1>
+    <form>
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+    <div class="links">
+      <p ><a class="forget" href="#">Forgot Password?</a></p>
+      <p>New user? <a href="create_account.html">Create an account</a></p>
+    </div>
+  </div>
+
+</body>
+</html>

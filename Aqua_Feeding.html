@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Aqua Feeding</title>
+<style>
+    body {
+        font-family: Poppins;
+        margin: 0;
+        padding: 0;
+        background: #d4f1f9;
+        color: #006064;
+    }
+
+    .feed1 {
+        margin-top: 80px;
+        max-width: 1200px;
+        margin: auto;
+        padding: 30px 40px;
+    }
+
+    .tex1, .tex4, .tex5, .tex6, .tex7, .tex8 {
+        color: #006064;
+    }
+
+    .tex2, .tex3, .tex9 {
+        color: black;
+    }
+
+    .tex2 {
+        font-size: 18px;
+        margin-bottom: 40px;
+    }
+
+    .tex3 {
+        font-size: 20px;
+        background-color: #fff;
+        padding: 30px;
+        border-left: 10px solid #006064;
+        border-radius: 10px;
+        line-height: 1.5;
+    }
+
+    .one{
+        animation: myani2 1s ease;
+        margin-bottom: 50px;
+    }
+    @keyframes myani2 {
+        from { opacity: 0; transform: translatex(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+        margin-top: 50px;
+    }
+
+    .card {
+        font-size: 18px;
+        border: 2px solid #006064;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        transform: translateY(0px);
+        transition: transform 0.5s ease;
+        margin-bottom: 30px;
+        word-wrap: break-word; 
+        overflow-wrap: break-word;
+        animation: myani 1s ease;
+        
+    }
+    .card h4{
+        font-size: 23px;
+    }
+
+    .card:hover {
+        transform: translateY(-15px);
+    }
+    .card p{
+        color: black;
+    }
+
+    .tabb td{
+        color: black;
+    }
+
+    .tabb {
+        margin-top: 40px;
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+    }
+
+    .tabb th, .tabb td {
+        border: 2px solid #006064;
+        padding: 15px;
+    }
+    .tabb tr:hover {
+        box-shadow: 0 10px 20px rgba(0, 96, 100, 0.4);
+    }
+
+    .tabb th {
+        background-color: #006064;
+        color: #ffff;
+        text-align: left;
+    }
+    .media{
+        border-radius: 10px;
+        margin-top: 60px;
+        padding: 20px;
+        background-color: white;
+        box-shadow:0 20px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .v1 {
+        font-weight: 600;
+        font-size: 40px;
+        margin-top: 10px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .v2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    .media iframe{
+        border-radius: 10px;
+    }
+    .form-div {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 500px;
+        background: #fff;
+        padding: 50px;
+        border-radius: 10px;
+        margin-top: 40px;
+        border: 3px solid #006064;
+    }
+
+    .form-div form {
+        max-width: 500px;
+        display: grid;
+        gap: 20px;
+    }
+
+    .form-div input, .form-div select, .form-div textarea {
+        padding: 15px;
+        font-size: 16px;
+        border: 1px solid #006064;
+        border-radius: 8px;
+    }
+
+    .form-div button {
+        background-color: #006064;
+        color: white;
+        padding: 14px;
+        font-size: 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .form-div button:hover {
+        background-color: #004c50;
+    }
+
+    .tip {
+        font-size: 18px;
+        background-color: #fff;
+        padding: 20px;
+        border-left: 6px solid #006064;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        color: black;
+    }
+
+    .tip:hover {
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .part1 {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        justify-content: center;
+        background-color: #fff;
+        animation: slideDown 4s ease-out forwards;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .part11, .part12 {
+        flex: 1 1 500px;
+        max-width: 600px;
+        box-sizing: border-box;
+    }
+
+    .part11 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+        font-weight: bolder;
+        font-size: 40px;
+        line-height: 1.5;
+    }
+
+    .part12 {
+        height: 500px;
+    }
+
+    .part12 img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .nutrition-section {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .nutrition-table {
+        display: grid;
+        font-size: 18px;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        max-width: 900px;
+        margin-bottom: 50px;
+    }
+
+    .nutri1 {
+        color: black;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        background-color: #fff;
+        padding: 20px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 96, 100, 0.1);
+        transition: transform 0.3s;
+    }
+
+    .nutri1:hover {
+        transform: translateY(-4px);
+    }
+
+    .nutrition-table .nutri1:first-child { 
+        background-color: #006064 !important;
+        color: white !important;
+    }
+
+    .hero {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 2rem;
+        animation: myani 1s ease;
+    }
+
+    .hero img {
+        max-width: 600px;
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-text {
+        max-width: 600px;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero p {
+        margin-bottom: 2rem;
+        font-size: 20px;
+        color: black;
+    }
+
+    .hero button {
+        background-color: #006064;
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 1s;
+        font-size: 1rem;
+    }
+
+    .hero button:hover {
+        background-color: #004c50;
+    }
+
+    @keyframes myani {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+</head>
+
+<body>
+<div>
+<section class="hero">
+    <div class="hero-text">
+        <h2 style="font-size: 50px;">AQUA FEEDING</h2>
+        <p>Optimal feeding ensures healthy fish growth, disease resistance, and profitable harvests.</p>
+        <button onclick="scrolltosection()">Get Started</button>
+    </div>
+    <img src="./FeedBanner6.jpg" alt="Aqua Feeding Banner">
+</section>
+
+<div class="feed1">
+    <div class="one">
+        <h1 class="tex1">🐟 Aqua Feeding Essentials</h1>
+        <p class="tex2">Feeding practices in aquaculture vary by species, size, and water conditions.</p>
+        <p class="tex3">Using the right feed type and quantity at each growth stage boosts fish health and yield.</p>
+    </div>
+<div id="targetSec">
+    <h1 class="tex4">🪱 Feeding Options for Aquatic Species</h1>
+    <div class="gallery">
+        <div class="card">
+            <h4>🧫 Starter Crumbles</h4>
+            <p>Micro-pellets or crumbles for hatchlings and fry. Easy to digest and nutrient-rich.</p>
+        </div>
+        <div class="card">
+            <h4>🌾 Floating Pellets</h4>
+            <p>Ideal for surface feeders like Tilapia and Catla. Allows observation of feeding behavior.</p>
+        </div>
+        <div class="card">
+            <h4>⚖️ Sinking Pellets</h4>
+            <p>Used for bottom-feeding species like Shrimp and Carp. Reduces feed wastage.</p>
+        </div>
+        <div class="card">
+            <h4>🧪 Fortified Feeds</h4>
+            <p>Feeds enriched with vitamins, probiotics, and enzymes for disease prevention.</p>
+        </div>
+    </div>
+
+    <h1 class="tex5">📆 Feeding Schedule by Growth Stage</h1>
+    <table class="tabb">
+        <tr><th>Growth Stage</th><th>Feeding Recommendation</th></tr>
+        <tr><td>Hatchlings</td><td>Starter feeds 5–6 times/day in small amounts</td></tr>
+        <tr><td>Juveniles</td><td>Floating/sinking pellets 3–4 times/day</td></tr>
+        <tr><td>Grow-out</td><td>High-protein feed 2–3 times/day</td></tr>
+        <tr><td>Market Size</td><td>Maintenance feed once or twice daily</td></tr>
+    </table>
+
+    <div class="media">
+        <div class="v1">🎥 Aqua Feeding - Demo Video</div>
+        <div class="v2">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/96ZHTU25JA8?si=gh-ecMK8gKclBHmB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    </div>
+
+    <h1 class="tex6" style="margin-top: 60px; text-align: center;">📋 Feed Activity Log</h1>
+    <div class="form-div">
+        <form>
+            <select>
+                <option>Select Feed Type</option>
+                <option>Starter Crumbles</option>
+                <option>Floating Pellets</option>
+                <option>Sinking Pellets</option>
+                <option>Fortified Feed</option>
+            </select>
+            <input type="date" placeholder="Feeding Date" />
+            <input type="text" placeholder="Quantity (e.g. 1kg, 500g)" />
+            <textarea placeholder="Additional Notes"></textarea>
+            <button type="submit" onclick="fun()">Log Feeding</button>
+        </form>
+    </div>
+
+    <div class="nutrition-section">
+        <h1 class="tex8">🧬 What's in the Feed?</h1>
+        <p class="tex9">Understand the nutrients essential for aquatic health and growth.</p>
+        <div class="nutrition-table">
+            <div class="nutri1" style="font-weight: bold;">
+                <div>Feed Type</div>
+                <div>Key Nutrients</div>
+                <div>Benefits</div>
+            </div>
+            <div class="nutri1"><div>🧫 Starter Crumbles</div><div>Protein, Lipids</div><div>Boosts early growth & survival</div></div>
+            <div class="nutri1"><div>🌾 Floating Pellets</div><div>Carbs, Protein</div><div>Supports fast body mass gain</div></div>
+            <div class="nutri1"><div>⚖️ Sinking Pellets</div><div>Fiber, Minerals</div><div>Good for bottom feeders' digestion</div></div>
+            <div class="nutri1"><div>🧪 Fortified Feed</div><div>Vitamins, Probiotics</div><div>Enhances immunity & water quality</div></div>
+        </div>
+    </div>
+
+    <h1 class="tex7">💡 Helpful Feeding Tips</h1>
+    <div class="tip">✅ Feed during cooler parts of the day to reduce stress.</div>
+    <div class="tip">✅ Avoid overfeeding to maintain water quality.</div>
+    <div class="tip">✅ Observe feeding behavior daily for early disease signs.</div>
+    <div class="tip">✅ Store feed in a dry, cool place to avoid spoilage.</div>
+    <div class="tip">✅ Adjust feeding based on season and water temperature.</div>
+</div>
+</div>
+<script>
+function fun() {
+    alert("✅ Aqua feeding activity logged successfully. Keep your fish thriving! 🐟");
+}
+function scrolltosection() {
+    const section = document.getElementById("targetSec");
+    section.scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
+</body>
+</html>

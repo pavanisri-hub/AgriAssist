@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Weather Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+        }
+
+        body {
+            font-family: 'poppins', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            font-size: 18px;
+        }
+
+        /* Background Video Styles */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+.header{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: green;
+    height: 100px;
+}
+.navigation{
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    align-items: center;
+    /* justify-content: space-between; */
+    gap: 50px;
+}
+.tags{
+    color: white;
+    text-decoration: none;
+    font-size: large;
+    display: block;
+}
+.tags:hover{
+    color: lightgreen;
+}
+.drop{
+    position: relative;
+    z-index: 999;
+}
+.dropdown{
+    font-size: 20px;
+    border-radius: 10px;
+    display: none;
+    background-color: #ffffff;
+    position: absolute;
+    border-bottom: 1px solid gray;
+}
+.drop:hover .dropdown{
+    display: block;
+}
+.dropdown a{
+    text-decoration: none;
+    color: green;
+    padding: 10px;
+
+}
+.dropdown a:hover{
+    color: lawngreen;
+}
+.profile{
+    color: green;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    background-color: lightgreen;
+    border-radius: 5px;
+    padding: 10px;
+}
+.profile:hover{
+    color: white;
+    background-color: rgb(12, 228, 12);
+}
+.bars{
+    display: none;
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+}
+.menu_options{
+    position: absolute;
+    top:0px;
+    left:-320px;
+    width: 300px;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: end;
+    background-color: rgb(4, 88, 5);
+    transition: left 0.8s linear;
+    z-index: 999;
+}
+.menu_options div{
+    border-bottom: 1px solid white;
+    border-radius: 5px;
+    width: 100%;
+}
+.menu_options a:hover{
+    color: lawngreen;
+}
+span{
+    font-size: 50px;
+    cursor: pointer;
+        width: fit-content;
+        color: #ffffff;
+    }
+    .menu_options a{
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        padding: 10px;
+    }
+    .drop1{
+        position: relative;
+    }
+    .dropdown1{
+        display: none;
+        background-color: #ffffff;
+        position: absolute;
+        border-bottom: 1px solid gray;
+    }
+    .drop1:hover .dropdown1{
+        display: block;
+    }
+    .dropdown1 a{
+        text-decoration: none;
+        color: green;
+        display: flex;
+        flex-direction: column;
+        font-size: 16px;
+    
+    }
+.dropdown1 a:hover{
+    color: lawngreen;
+}
+@media (min-width:320px) and (max-width:920px)
+{
+    .tags{
+        display: none;
+    }
+    .profile{
+        display: none;
+    }
+    .bars{
+        display: block;
+    }
+}
+.footer{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: green;
+    padding: 30px 0px;
+    gap: 25px;
+    transition: transform 1s linear;
+}
+.foot{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+   gap: 20px 0px;
+}
+.links{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px 50px;
+}
+.com{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 10px 0px;
+    padding: 0px 20px;
+}
+.com11{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 10px 0px;
+     padding: 0px 15px;
+}
+.com1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px 10px ;
+}
+.copy{
+    font-size: 16px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+footer a:hover{
+   transform: translateY(-5px);
+   text-shadow: 0px 0px 5px white;
+}
+        /* Main Content Container */
+        .main-content {
+            position: relative;
+            z-index: 10;
+            padding: 50px;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        /* Live Weather Hero Section */
+        .live-weather-section {
+          height: 700px;
+            text-align: center;
+            padding: 6rem 3rem;
+            margin-bottom: 4rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 3rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            line-height: 1.2;
+        }
+
+        .check-now-btn {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 1.5rem 4rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 25px rgba(59, 130, 246, 0.5);
+            min-width: 200px;
+        }
+
+        .check-now-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.7);
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+        }
+
+        /* Weather Status Grid */
+        .weather-stats-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3.3rem;
+            color: white;
+            text-align: center;
+            margin-bottom: 3rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            font-weight: bold;
+        }
+
+        .weather-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .weather-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .weather-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+          
+        }
+
+        .weather-card h3 {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        .weather-value {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #60a5fa;
+            margin-bottom: 1rem;
+        }
+
+        .weather-unit {
+            font-size: 1.4rem;
+            color: #e5e7eb;
+            font-weight: 500;
+        }
+
+        /* Previous Days Section */
+        .previous-days-section {
+            margin-bottom: 4rem;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .day-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .day-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .day-name {
+            font-size: 1.6rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        .weather-emoji {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .day-temp {
+            font-size: 2.2rem;
+            color: #60a5fa;
+            font-weight: bold;
+        }
+
+         /* Cultivation Suggestions */
+        .cultivation-section {
+            margin-bottom: 4rem;
+        }
+
+        .cultivation-content {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(16, 185, 129, 0.25));
+            backdrop-filter: blur(25px);
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 2px solid rgba(34, 197, 94, 0.5);
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(34, 197, 94, 0.3);
+        }
+
+        .cultivation-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .cultivation-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cultivation-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .cultivation-text {
+            font-size: 2rem;
+            color: white;
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+
+        .crops-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .crop-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .crop-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 40px rgba(34, 197, 94, 0.4);
+            border-color: rgba(34, 197, 94, 0.8);
+        }
+
+        .crop-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .crop-card:hover::before {
+            left: 100%;
+        }
+
+        .crop-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .crop-card:hover .crop-emoji {
+            animation-duration: 0.5s;
+        }
+
+        .crop-name {
+            font-size: 30px;
+            color: black;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .crop-benefit {
+            font-size: 1.5rem;
+            color: rgb(34, 10, 248);
+            font-style: italic;
+        }
+
+        .weather-match {
+            background: black;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        /* Weather Alert Section */
+        .alert-section {
+            margin-bottom: 4rem;
+        }
+
+        .alert-box {
+            background: rgba(239, 68, 68, 0.2);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 4rem 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 2px solid rgba(239, 68, 68, 0.5);
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .alert-text {
+            font-size: 1.8rem;
+            color: white;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .alert-emoji {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+        }
+
+        .footer-section {
+            background: rgba(45, 52, 54, 0.95);
+            backdrop-filter: blur(15px);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 40px;
+            margin-bottom: 1.5rem;
+            color: #74b9ff;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #74b9ff;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            background: #74b9ff;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 30px;
+        }
+
+        .social-icon:hover {
+            background: #0984e3;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 2rem;
+            text-align: center;
+            color: #ddd;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0.5rem;
+            font-size: 30px;
+        }
+
+        /* Tablet Responsiveness */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .section-title {
+                font-size: 3rem;
+            }
+
+            .weather-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+
+            .main-content {
+                padding: 2rem;
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.5rem;
+                min-height: 140px;
+            }
+
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .nav-menu {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-menu a {
+                font-size: 1.2rem;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            .weather-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .days-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .check-now-btn {
+                padding: 1.2rem 3rem;
+                font-size: 1.4rem;
+            }
+
+            .live-weather-section {
+                padding: 4rem 2rem;
+                min-height: 350px;
+            }
+
+            .weather-card {
+                min-height: 200px;
+                padding: 2rem 1.5rem;
+            }
+
+            .day-card {
+                min-height: 180px;
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Small Mobile */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .days-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .weather-value {
+                font-size: 3rem;
+            }
+
+            .day-temp {
+                font-size: 2rem;
+            }
+
+            .cultivation-text,
+            .alert-text {
+                font-size: 1.5rem;
+            }
+
+            .crop-list {
+                font-size: 1.8rem;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+            }
+
+            .nav-menu a {
+                font-size: 1.1rem;
+                padding: 0.3rem 0.8rem;
+            }
+        }
+
+        /* Extra Small Screens */
+        @media (max-width: 360px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+
+            .live-weather-section {
+                padding: 3rem 1.5rem;
+                min-height: 300px;
+            }
+
+            .weather-card {
+                min-height: 180px;
+                padding: 1.5rem 1rem;
+            }
+
+            .day-card {
+                min-height: 160px;
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation for cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .weather-card,
+        .day-card {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Ensure full viewport coverage */
+        .main-content {
+            width: 100vw;
+            max-width: 100%;
+        }
+
+        /* Prevent horizontal scroll */
+        body, html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Video -->
+    <video class="video-background" autoplay muted loop>
+        <source src="bg2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="video-overlay"></div>
+<header>
+            <div class="header">
+               <a href="index.html"><img src="./Logo_Agri_Assist.png"  width="160px"></a>
+                <nav class="navigation">
+                        <a href="index.html" class="tags"><b>Home</b></a>
+                        <div class="drop" ><a class="tags" href="index.html"><b>Categories</b></a>
+                            <div class="dropdown">
+                          <a href="Agriculture.html">Agriculture</a>
+                           <a href="Aquaculture.html">Aquaculture</a>
+                           <a href="Sericulture.html">Sericulture</a>
+                           <a href="Apiculture.html">Apiculture</a>
+                           <a href="Poultry1.html">Poultry</a>
+                           <a href="Dairy.html">Dairy</a>
+                            </div>
+                            </div>
+                        <a href="Weather1.html" class="tags"><b>Weather</b></a>
+                        <a href="MarketPlace_AGRI.html" class="tags"><b>Market</b></a>
+                        <a href="About-us.html" class="tags"><b>About</b></a>
+                        <a href="iship_contact_us.html" class="tags"><b>Contact Us</b></a>
+                        <a href="project-login.html" class="profile"><b>Login</b></a>
+                </nav>
+                <div onclick="Open()" style="padding-top: 45px;" class="bars"><i class="fa-solid fa-bars"></i></div>
+                <div class="menu_options">
+                <span onclick="Close()">&times;</span>
+                <div><a href="Home.html"><b>Home</b></a></div>
+                         <div class="drop1"><a href="Home.html"><b>Categories</b></a>
+                            <div class="dropdown1">
+                            <a href="Agriculture.html">Agriculture</a>
+                           <a href="Aquaculture.html">Aquaculture</a>
+                           <a href="Sericulture.html">Sericulture</a>
+                           <a href="Apiculture.html">Apiculture</a>
+                           <a href="Poultry1.html">Poultry</a>
+                           <a href="Dairy.html">Dairy</a>
+                            </div>
+                        </div>
+                        <div><a href="Weather1.html"><b>Weather</b></a></div>
+                        <div><a href="MarketPlace_AGRI.html"><b>Market</b></a></div>
+                        <div><a href="About-us.html"><b>About</b></a></div>
+                        <div><a href="iship_contact_us.html"><b>Contact Us</b></a></div>
+                        <div><a href="project-login.html"><b>Login</b></a></div>
+              </div>
+             <script>
+            function Close(){
+                document.getElementsByClassName("menu_options")[0].style.left="-320px";
+            }
+             function Open(){
+                document.getElementsByClassName("menu_options")[0].style="left:0px";
+            }
+            </script>
+            </div>
+        </header>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Live Weather Hero Section -->
+        <section class="live-weather-section">
+            <h1 class="hero-title">Real-Time Weather Tracking</h1>
+            <button class="check-now-btn" onclick="checkWeather()">Check Now</button>
+        </section>
+
+        <!-- Current Weather Stats -->
+        <section class="weather-stats-section">
+            <h2 class="section-title">Current Weather Status</h2>
+            <div class="weather-grid">
+                <div class="weather-card">
+                    <h3>Temperature</h3>
+                    <div class="weather-value">28°</div>
+                    <div class="weather-unit">Celsius</div>
+                </div>
+                <div class="weather-card">
+                    <h3>Humidity</h3>
+                    <div class="weather-value">65%</div>
+                    <div class="weather-unit">Moisture</div>
+                </div>
+                <div class="weather-card">
+                    <h3>Wind Speed</h3>
+                    <div class="weather-value">12</div>
+                    <div class="weather-unit">km/h</div>
+                </div>
+                <div class="weather-card">
+                    <h3>Rainfall</h3>
+                    <div class="weather-value">2.5</div>
+                    <div class="weather-unit">mm</div>
+                </div>
+                <div class="weather-card">
+                    <h3>Air Quality</h3>
+                    <div class="weather-value">Good</div>
+                    <div class="weather-unit">AQI: 45</div>
+                </div>
+                <div class="weather-card">
+                    <h3>UV Index</h3>
+                    <div class="weather-value">6</div>
+                    <div class="weather-unit">Moderate</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Previous Days Weather -->
+        <section class="previous-days-section">
+            <h2 class="section-title">Previous Days Weather</h2>
+            <div class="days-grid">
+                <div class="day-card">
+                    <div class="day-name">Yesterday</div>
+                    <div class="weather-emoji">☀️</div>
+                    <div class="day-temp">32°C</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-name">2 Days Ago</div>
+                    <div class="weather-emoji">🌧️</div>
+                    <div class="day-temp">24°C</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-name">3 Days Ago</div>
+                    <div class="weather-emoji">☁️</div>
+                    <div class="day-temp">26°C</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-name">4 Days Ago</div>
+                    <div class="weather-emoji">🌤️</div>
+                    <div class="day-temp">29°C</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-name">5 Days Ago</div>
+                    <div class="weather-emoji">⛈️</div>
+                    <div class="day-temp">22°C</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-name">6 Days Ago</div>
+                    <div class="weather-emoji">⛈️</div>
+                    <div class="day-temp">22°C</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-name">7 Days Ago</div>
+                    <div class="weather-emoji">☁️</div>
+                    <div class="day-temp">26°C</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-name">8 Days Ago</div>
+                    <div class="weather-emoji">🌤️</div>
+                    <div class="day-temp">29°C</div>s
+                </div>
+            </div>
+        </section>
+
+       <!-- Cultivation Suggestions -->
+        <section class="cultivation-section">
+            <h2 class="section-title">Cultivation Suggestions</h2>
+            <div class="cultivation-content">
+                <div class="cultivation-header">
+                    <div class="cultivation-icon">🌱</div>
+                    <p class="cultivation-text">
+                        Based on current weather conditions, here are the perfect crops to cultivate:
+                    </p>
+                </div>
+                <div class="crops-grid">
+                    <div class="crop-card">
+                        <span class="crop-emoji">🌾</span>
+                        <div class="crop-name">Rice</div>
+                        <div class="crop-benefit">High moisture tolerance</div>
+                        <div class="weather-match">Perfect for 65% humidity</div>
+                    </div>
+                    <div class="crop-card">
+                        <span class="crop-emoji">🥜</span>
+                        <div class="crop-name">Groundnut</div>
+                        <div class="crop-benefit">Drought resistant</div>
+                        <div class="weather-match">Ideal for 28°C</div>
+                    </div>
+                    <div class="crop-card">
+                        <span class="crop-emoji">🌽</span>
+                        <div class="crop-name">Corn</div>
+                        <div class="crop-benefit">Fast growing</div>
+                        <div class="weather-match">Loves current conditions</div>
+                    </div>
+                    <div class="crop-card">
+                        <span class="crop-emoji">🍅</span>
+                        <div class="crop-name">Tomatoes</div>
+                        <div class="crop-benefit">High yield potential</div>
+                        <div class="weather-match">Optimal temperature</div>
+                    </div>
+                    <div class="crop-card">
+                        <span class="crop-emoji">🥕</span>
+                        <div class="crop-name">Carrots</div>
+                        <div class="crop-benefit">Cool season crop</div>
+                        <div class="weather-match">Good soil moisture</div>
+                    </div>
+                    <div class="crop-card">
+                        <span class="crop-emoji">🥬</span>
+                        <div class="crop-name">Lettuce</div>
+                        <div class="crop-benefit">Quick harvest</div>
+                        <div class="weather-match">Perfect humidity</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Weather Alert -->
+        <section class="alert-section">
+            <h2 class="section-title">Weather Alerts</h2>
+            <div class="alert-box">
+                <p class="alert-text">
+                    <span class="alert-emoji">⚠️</span>
+                    Heavy rain expected tomorrow in your region. Take necessary precautions and avoid outdoor activities.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+            <div class="footer">
+                <div class="foot">
+                    <div class="links">
+                        <div class="com">
+                            <div style=" color: white; font-size: 18px; font-family: Arial, Helvetica, sans-serif; "><b>Quick Links</b></div>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; ">Home</a>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; ">Weather</a>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; ">Market</a>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; ">About</a>
+                        </div>
+                        <div class="com">
+                            <div style=" color: white; font-size: 18px; font-family: Arial, Helvetica, sans-serif; "><b>Resources</b></div>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; ">FAQ's</a>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; ">Blogs</a>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; ">Guidelines</a>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; ">Terms & Conditions</a>
+                        </div>
+                        <div class="com11">
+                            <div style="color: white; font-size: 18px; font-family: Arial, Helvetica, sans-serif"><b>Contact</b></div>
+                             <div style="color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; cursor: pointer;">📞 Call: +91 8096542356</div>
+                              <div style="color: white; font-size: 16px; font-family: Arial, Helvetica, sans-serif; cursor: pointer;">📧 Email: support@agriassist.com</div>
+                        </div>
+                        <div class="com">
+                            <div style="color: white; font-size: 18px; font-family: Arial, Helvetica, sans-serif"><b>Follow Us</b></div>
+                            <div class="com1">
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif; "><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif; "><i class="fa-brands fa-facebook"></i></a>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif; "><i class="fa-brands fa-youtube"></i></a>
+                            <a href="Home.html" style="text-decoration: none; color: white; font-size: 20px; font-family: Arial, Helvetica, sans-serif; "><i class="fa-brands fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="photo"><img src="Logo.png" width="250px" height="200px"></div>
+                </div>
+                 <hr/>
+                <div class="copy">&copy; 2025 AgriAssist. All rights reserved.</div>
+            </div>
+        </footer>
+    <script>
+        function checkWeather() {
+            alert('Checking current weather conditions...\n\nTemperature: 28°C\nCondition: Partly Cloudy\nHumidity: 65%\nWind: 12 km/h');
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation effect
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.weather-card, .day-card');
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                const cardVisible = 150;
+                
+                if (cardTop < window.innerHeight - cardVisible) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Ensure video covers full screen on resize
+        window.addEventListener('resize', () => {
+            const video = document.querySelector('.video-background');
+            video.style.width = '100vw';
+            video.style.height = '100vh';
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'965a303b12660ff2',t:'MTc1MzU5ODg3OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
